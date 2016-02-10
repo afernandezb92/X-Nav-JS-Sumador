@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Simple calculator</title>
+		<script>
+			function change (id, newValue) {
+				var element = document.getElementById(id);
+				element.innerHTML = newValue;
+			}
+			function add (id, changed){
+				var value = document.getElementById(id);
+				var content = value.innerHTML;
+				var nums = content.split("+");
+				var result = parseInt(nums[0]) + parseInt(nums[1]);
+				change(changed, '= ' +result);
+			}
+			function rand (changed, changed2){
+				change(changed, Math.round((Math.random() * 1000)) + "+" + Math.round((Math.random() * 1000)));
+				change(changed2, "");
+			}
+		</script>
+	</head>
+	<body>
+		<p>Adder...<span id='op'>5+3</span>
+		<span id="res"></span> <a href="javascript:add('op', 'res')">Add!</a>
+		<span id="ran"></span> <a href="javascript:rand('op', 'res')">  Rand</a></p>
+	</body>	
+</html>
+

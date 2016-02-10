@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Simple calculator with random </title>
+		<script>
+			op = 1;
+			function change (id, newValue) {
+				var element = document.getElementById(id);
+				element.innerHTML = newValue;
+			}
+			function add (id){
+				var value = document.getElementById(id);
+				var content = value.innerHTML;
+				var nums = content.split("+");
+				var result = parseInt(nums[0]) + parseInt(nums[1]);
+				change(id, content + '=' + result);
+			}
+			function rand (changed, changed2){
+				var value = document.getElementById(changed);
+				var content = value.innerHTML;
+				var value2 = document.getElementById(changed2);
+				var content2 = value2.innerHTML;
+				op++;
+				change(changed, content + "<p>Op" + op + ": <span id='op" + op + "'>" +  
+				Math.round((Math.random() * 1000)) + "+" + Math.round((Math.random() * 1000)) + "</span></p>");
+				change(changed2, content2 + "<span id='res'><a href=" + "javascript:add('op" +  op + "')" + ">, " + op + "</a></span>");
+			}
+		</script>
+	</head>
+	<body>
+		<span id='op'>
+			<p>Op1: <span id='op1'>5+3</span></p>
+		</span>
+		<p>Add<span id='res'><a href="javascript:add('op1')">: 1</a></span>
+		<span id='ran'></span> <a href="javascript:rand('op', 'res')">  Rand</a></p>
+	</body>	
+</html>
+
